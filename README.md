@@ -21,6 +21,7 @@ Close.
 Open Conda terminal and type:
 ```
 git clone https://github.com/white-fusion/jarvis_speech_assistant
+cd jarvis_speech_assistant
 conda env create -f environment.yml
 conda activate jarvis
 python main.py
