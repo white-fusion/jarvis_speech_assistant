@@ -38,7 +38,7 @@ def respond(voice_data):
         url = 'https://google.nl/maps/place/' + location + '/&amp;'
         reply('Here is the location of ' + location)
         webbrowser.get().open(url)  
-    if 'bye' or 'close' or 'quit' or 'exit' in voice_data:
+    if 'close' in voice_data:
         exit() 
     if 'tell a joke' in voice_data:
         i = random.randint(1, 5)
@@ -47,6 +47,11 @@ def respond(voice_data):
         url = 'https://mail.google.com/mail/u/0/#inbox?compose=new'
         reply('Here you go!')
         webbrowser.get().open(url)
+    if 'play music' in voice_data:
+        i = random.randint(1, 5)
+        playsound.playsound('./music/music' + str(i) + '.mp3')
+    if 'start pomodoro' in voice_data:
+        pomodoro()
 
 
 def reply(audio_string):
@@ -64,6 +69,14 @@ def joke(i):
     reply(start_line[i])
     reply(punch_line[i])
 
+def pomodoro():
+    reply("Pomodoro started")
+    n = 25 #Number of minutes for pomodoro
+    for i in range(n):
+        print(str(n-i) + ' minutes remaining.')
+        time.sleep(60)
+    reply("Done")
+    
 time.sleep(1)   
 reply('How can I help you?')
 while 1:
